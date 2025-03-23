@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyale MJ's Blog</title>
+    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 75%, #292929 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* General Card Styles */
+        .card {
+            width: 90%;
+            max-width: 600px;
+            margin: 1rem auto;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .header-card h3 {
+            color: #ff69b4;
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .header-card h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -5px;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background-color: #ff69b4;
+            opacity: 0.5;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row; /* Always keep horizontal */
+            flex-wrap: nowrap; /* Prevent wrapping to next line */
+            justify-content: center;
+            gap: 0.5rem; /* Reduced gap for smaller screens */
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5));
+        }
+
+        nav a:hover {
+            border-color: #ff69b4;
+            box-shadow: 0 0 15px #ff69b4;
+            transform: translateY(-3px);
+        }
+
+        .header-card img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #ff69b4;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card h2 {
+            color: #ff69b4;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .welcome-heading {
+            color: rgba(219, 223, 10, 0.705);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icons {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-icons a:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .contact-icons img {
+            width: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            border-top: 1px solid #333;
+            color: #999;
+            width: 100%;
+        }
+
+        /* Media Queries to adjust button size on smaller screens */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 0.5rem 1rem; /* Smaller padding */
+                font-size: 0.9rem; /* Smaller text */
+            }
+            .card {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                padding: 0.4rem 0.8rem; /* Even smaller padding */
+                font-size: 0.8rem; /* Even smaller text */
+            }
+            .header-card h3 {
+                font-size: 2rem;
+            }
+            .header-card img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="card header-card">
+            <h3>Kyale MJ</h3>
+            <img src="images/me.jpg" alt="Kyale MJ">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2 class="welcome-heading">Hi, welcome to my page</h2>
+            <p>I am a Software Engineering Undergraduate at the Multimedia University of Kenya. I am also a trader.
+               <br>I spend my free time coding, reading books and watching sci-fi movies mostly about AI and space, and a lot of crime investigations.</p>
+        </div>
+
+        <div class="card">
+            <h2>Contact Me</h2>
+            <div class="contact-icons">
+                <a href="https://github.com/Kyalefnj" aria-label="GitHub"><img src="images/git.png" alt="GitHub"></a>
+                <a href="https://www.goodreads.com/kyale00" aria-label="Goodreads"><img src="images/goodreads.png" alt="Goodreads"></a>
+                <a href="https://www.instagram.com/kyalemj/" aria-label="Instagram"><img src="images/ig.png" alt="Instagram"></a>
+                <a href="https://x.com/kyalemj/" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)"></a>
+                <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail"></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © Kyale | All rights reserved | 2025
+    </footer>
+</body>
+</html>
