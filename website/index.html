@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyale MJ's Blog</title>
     <link rel="icon" type="image/jpg" href="images/favicon.jpg">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@300;400&display=swap"
@@ -32,7 +30,6 @@
             align-items: center;
         }
 
-        /* General Card Styles */
         .card {
             width: 90%;
             max-width: 600px;
@@ -91,10 +88,10 @@
         nav ul {
             list-style: none;
             display: flex;
-            flex-direction: row; /* Always keep horizontal */
-            flex-wrap: nowrap; /* Prevent wrapping to next line */
+            flex-direction: row;
+            flex-wrap: nowrap;
             justify-content: center;
-            gap: 0.5rem; /* Reduced gap for smaller screens */
+            gap: 0.5rem;
             padding: 0.5rem 0;
         }
 
@@ -179,11 +176,10 @@
             width: 100%;
         }
 
-        /* Media Queries to adjust button size on smaller screens */
         @media (max-width: 768px) {
             nav a {
-                padding: 0.5rem 1rem; /* Smaller padding */
-                font-size: 0.9rem; /* Smaller text */
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
             }
             .card {
                 width: 95%;
@@ -192,8 +188,8 @@
 
         @media (max-width: 480px) {
             nav a {
-                padding: 0.4rem 0.8rem; /* Even smaller padding */
-                font-size: 0.8rem; /* Even smaller text */
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
             }
             .header-card h3 {
                 font-size: 2rem;
