@@ -3,240 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyale</title>
-    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@300;400&display=swap"
-        rel="stylesheet">
+    <title>Arion - Add a Research Paper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 75%, #292929 100%);
-            color: #e0e0e0;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #171717 0%, #292929 75%, #292929 100%);
+    color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .card {
-            width: 90%;
-            max-width: 600px;
-            margin: 1rem auto;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
+/* General Card Styles */
+.card {
+    width: 90%;
+    max-width: 600px;
+    margin: 1rem auto;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-        }
+.card:hover {
+    transform: translateY(-10px);
+}
 
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
-        .header-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem;
-        }
+.header-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
 
-        .header-card h3 {
-            color: #ff69b4;
-            font-family: 'Roboto Slab', serif;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-            position: relative;
-        }
+.header-card h3 {
+    color: #ff69b4;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    position: relative;
+}
 
-        .header-card h3::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -5px;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 2px;
-            background-color: #ff69b4;
-            opacity: 0.5;
-        }
+.header-card h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: #ff69b4;
+    opacity: 0.5;
+}
 
-        nav {
-            margin-top: 0.5rem;
-            width: 100%;
-        }
+nav {
+    margin-top: 0.5rem;
+    width: 100%;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #fff;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-            background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5));
-        }
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5));
+}
 
-        nav a:hover {
-            border-color: #ff69b4;
-            box-shadow: 0 0 15px #ff69b4;
-            transform: translateY(-3px);
-        }
+nav a:hover {
+    border-color: #ff69b4;
+    box-shadow: 0 0 15px #ff69b4;
+    transform: translateY(-3px);
+}
 
-        .header-card img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #ff69b4;
-        }
+nav a.active {
+    border-color: #ff69b4;
+    box-shadow: 0 0 15px #ff69b4;
+    background: linear-gradient(45deg, rgba(255, 105, 180, 0.3), rgba(255, 105, 180, 0.5));
+}
 
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
-        .card h2 {
-            color: #ff69b4;
-            margin-bottom: 0.5rem;
-        }
+.card h2 {
+    color: #ff69b4;
+    margin-bottom: 0.5rem;
+}
 
-        .card .welcome-heading {
-            color: rgba(219, 223, 10, 0.705);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+.card p {
+    color: #ccc;
+    margin-bottom: 1rem;
+}
 
-        .card p {
-            color: #ccc;
-            margin-bottom: 1rem;
-        }
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #333;
+    color: #999;
+    width: 100%;
+}
 
-        .contact-icons {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+/* Form-Specific Styles */
+.form-card {
+    margin-top: 2rem;
+}
 
-        .contact-icons a:hover {
-            transform: rotate(10deg) scale(1.1);
-        }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
-        .contact-icons img {
-            width: 40px;
-            border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
 
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            border-top: 1px solid #333;
-            color: #999;
-            width: 100%;
-        }
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e0e0e0;
+}
 
-        @media (max-width: 768px) {
-            nav a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-            .card {
-                width: 95%;
-            }
-        }
+.form-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        @media (max-width: 480px) {
-            nav a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-            }
-            .header-card h3 {
-                font-size: 2rem;
-            }
-            .header-card img {
-                width: 100px;
-                height: 100px;
-            }
-        }
+.form-input:focus {
+    outline: none;
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.3);
+}
+
+.upload-area {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed #4b5563;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.upload-area:hover {
+    background: rgba(255, 105, 180, 0.1);
+}
+
+.upload-icon {
+    font-size: 2rem;
+    color: #ff69b4;
+    margin-bottom: 0.5rem;
+}
+
+.upload-text {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.browse-btn {
+    background: linear-gradient(45deg, #ff69b4, #ff8cc3);
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.browse-btn:hover {
+    box-shadow: 0 0 15px #ff69b4;
+    transform: translateY(-3px);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.back-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ff69b4;
+    text-decoration: underline;
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, #ff69b4, #ff8cc3);
+    color: #ffffff;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 0 15px #ff69b4;
+    transform: translateY(-3px);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .card {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .header-card h3 {
+        font-size: 2rem;
+    }
+}
     </style>
 </head>
 <body>
     <header>
-        <div class="card header-card">
-            <h3>Kyale MJ</h3>
-          
+        <div class="header-card">
+            <h3>Arion</h3>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#" class="active">Add Source</a></li>
+                    <li><a href="#">Profile</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="card">
-            <h2 class="welcome-heading">Hi, welcome to my page</h2>
-            <p>I am a Software Engineering Undergraduate. I am also a trader.
-               <br>I spend my free time coding, reading books and watching sci-fi movies mostly about AI and space, and a lot of crime investigations.</p>
-        </div>
-
-        <div class="card">
-            <h2>Contact Me</h2>
-            <div class="contact-icons">
-                <a href="https://github.com/Kyalefnj" aria-label="GitHub"><img src="images/git.png" alt="GitHub"></a>
-                <a href="https://www.goodreads.com/kyale00" aria-label="Goodreads"><img src="images/goodreads.png" alt="Goodreads"></a>
-                <a href="https://www.instagram.com/kyalemj/" aria-label="Instagram"><img src="images/ig.png" alt="Instagram"></a>
-                <a href="https://x.com/kyalemj/" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)"></a>
-                <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail"></a>
-            </div>
+        <div class="card form-card">
+            <h2>Add a Research Paper</h2>
+            <p>Please enter a source name and upload the file.</p>
+            <form class="form">
+                <div class="form-group">
+                    <label for="source-name" class="form-label">Name</label>
+                    <input type="text" id="source-name" class="form-input" placeholder="Enter a source name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Upload File</label>
+                    <div class="upload-area">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <p class="upload-text">Upload a Research Paper</p>
+                        <button type="button" class="browse-btn">Browse File</button>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <a href="#" class="back-link">Go Back</a>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </form>
         </div>
     </main>
 
     <footer>
-        © Kyale | All rights reserved | 2025
+        <p>&copy; 2025 Arion. All rights reserved.</p>
     </footer>
 </body>
 </html>
