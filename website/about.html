@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Kyale MJ</title>
     <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Reuse the CSS from index.html -->
     <style>
+        /* Paste the ENTIRE CSS from your index.html here */
          * {
             margin: 0;
             padding: 0;
@@ -18,7 +24,8 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 75%, #292929 100%);
+            /* Sharper Gradient */
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 75%, #292929 100%); /* Sharper stops */
             color: #e0e0e0;
             line-height: 1.6;
             padding: 0 20px;
@@ -88,6 +95,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
+        /* Glowing Border on Hover */
         nav a:hover {
             border-color: #ff69b4;
             box-shadow: 0 0 15px #ff69b4;
@@ -95,6 +103,7 @@
             color: #fff;
         }
 
+        /* Inner Background with Gradients */
         nav a::before {
             content: '';
             position: absolute;
@@ -103,12 +112,13 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5));
+            background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5)); /* Default */
             transition: background 0.3s ease;
             border-radius: 25px;
         }
 
-        nav a[href*="index.html"]::before {
+        /* Specific Gradients for Each Button */
+        nav a[href*="index.html"]::before { /* Home button */
             background: linear-gradient(45deg, rgba(96, 103, 99, 0.8), rgba(96, 103, 99, 0.5));
         }
 
@@ -124,8 +134,9 @@
             background: linear-gradient(45deg, rgb(18, 111, 143), rgba(18, 111, 143, 0.7));
         }
 
-        nav a:hover::before {
-             filter: brightness(1.2);
+        /* Subtle Background Change on Hover (optional) */
+        nav a:hover::before{
+             filter: brightness(1.2); /* Slightly brighter on hover */
         }
 
         header img {
@@ -218,7 +229,8 @@
             header img {
                 margin-top: 1rem;
             }
-            nav a {
+            /* Make buttons wider on small screens */
+            nav a{
                 padding: 0.7rem 2rem;
             }
         }
@@ -236,11 +248,17 @@
     </style>
 </head>
 <body>
+    
+
     <main>
         <h2>About Me</h2>
+        <div class="tenor-gif-embed" data-postid="24903248" data-share-method="host" data-aspect-ratio="1.78771" data-width="100%"><a href="https://tenor.com/view/tip-jar-gif-24903248">Tip Jar GIF</a>from <a href="https://tenor.com/search/tip+jar-gifs">Tip Jar GIFs</a></div> 
+
     </main>
+
     <footer>
         © Kyale | All rights reserved | 2025
     </footer>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </body>
 </html>
