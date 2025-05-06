@@ -235,13 +235,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             gap: clamp(1rem, 3vw, 1.5rem);
         }
         .about-section,
         .what-i-do-section,
         .projects-section,
-        .featured-content-section {
+        .featured-content-section,
+        .contact-section {
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
@@ -261,56 +262,50 @@
         .what-i-do-section.visible,
         .projects-section.visible,
         .featured-content-section.visible,
-        .contact-area-wrapper.visible { 
+        .contact-section.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .contact-area-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
+        .contact-section {
             align-items: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            margin-bottom: clamp(2rem, 6vw, 3rem);
         }
-        .contact-content-gradient-box {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
-            padding: clamp(1rem, 2vw, 1.5rem); 
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
-            margin: 0 auto; 
-        }
-        .contact-title-in-box { 
+        .contact-title {
             color: #C67F3D;
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.3rem, 3vw, 1.7rem);
-            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            margin-bottom: clamp(0.75rem, 2vw, 1rem);
             text-align: center;
-            width: 100%; 
-            border-bottom: none; 
-            padding-bottom: 0; 
-            flex-shrink: 0; 
+            width: 100%;
+        }
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.5rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
+            padding-top: clamp(0.5rem, 1.5vw, 0.75rem);
+        }
+        .contact-icons img {
+            width: clamp(28px, 8vw, 45px);
+            height: clamp(28px, 8vw, 45px);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            loading: lazy;
+        }
+        .contact-icons a:hover img {
+            box-shadow: 0 0 12px #C67F3D;
+            transform: scale(1.1);
         }
         @media (max-width: 991px) {
             .about-section,
             .what-i-do-section,
             .projects-section,
-            .featured-content-section {
+            .featured-content-section,
+            .contact-section {
                  margin-left: clamp(1rem, 4vw, 2rem);
                  margin-right: clamp(1rem, 4vw, 2rem);
-            }
-            .contact-area-wrapper { 
-                 margin-left: clamp(1rem, 4vw, 2rem);
-                 margin-right: clamp(1rem, 4vw, 2rem);
-                 margin-bottom: clamp(2rem, 6vw, 3rem);
-            }
-            .contact-content-gradient-box {
-                width: 100%; 
+                 max-width: none;
             }
         }
         .about-section h2,
@@ -433,26 +428,6 @@
             flex-grow: 1;
             line-height: 1.5;
         }
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: clamp(0.5rem, 2vw, 1.5rem);
-            flex-wrap: wrap;
-            padding-top: clamp(0.5rem, 1.5vw, 0.75rem);
-            margin-top: auto;
-        }
-        .contact-icons img {
-            width: clamp(28px, 8vw, 45px);
-            height: clamp(28px, 8vw, 45px);
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            loading: lazy;
-        }
-        .contact-icons a:hover img {
-            box-shadow: 0 0 12px #C67F3D;
-            transform: scale(1.1);
-        }
         footer {
             text-align: center;
             padding: clamp(1rem, 2vw, 2rem) clamp(0.5rem, 2vw, 1rem);
@@ -472,13 +447,11 @@
             .about-section,
             .what-i-do-section,
             .projects-section,
-            .featured-content-section {
+            .featured-content-section,
+            .contact-section {
                  margin-left: clamp(0.75rem, 3vw, 1rem);
                  margin-right: clamp(0.75rem, 3vw, 1rem);
-            }
-            .contact-area-wrapper {
-                 margin-left: clamp(0.75rem, 3vw, 1rem);
-                 margin-right: clamp(0.75rem, 3vw, 1rem);
+                 max-width: none;
             }
             .main-hero-heading {
                 font-size: clamp(2rem, 6vw, 3rem);
@@ -496,24 +469,32 @@
             }
         }
         @media (min-width: 992px) {
+            main {
+                margin: 0;
+                padding: 0 clamp(0.5rem, 1.5vw, 1rem);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(1rem, 2vw, 1.5rem);
+                align-items: start;
+            }
             .hamburger { display: none; }
-            .nav-menu { 
-                display: block; 
-                position: static; 
-                background: none; 
-                box-shadow: none; 
-                width: auto; 
-                height: auto; 
-                margin-left: auto; 
+            .nav-menu {
+                display: block;
+                position: static;
+                background: none;
+                box-shadow: none;
+                width: auto;
+                height: auto;
+                margin-left: auto;
                 top: auto; left: auto; right: auto;
                 border-radius: 0;
             }
-            .nav-menu ul { 
-                flex-direction: row; 
+            .nav-menu ul {
+                flex-direction: row;
                 gap: clamp(0.3rem, 0.8vw, 0.6rem);
-                padding: 0; 
-                align-items: center; 
-                height: 100%; 
+                padding: 0;
+                align-items: center;
+                height: 100%;
             }
             .nav-menu li { margin: 0; width: auto; }
             .nav-menu a {
@@ -523,19 +504,12 @@
                 min-width: clamp(70px, 8vw, 90px);
                 height: clamp(32px, 4.5vw, 38px);
             }
-            main {
-                margin: 0;
-                padding: 0 clamp(0.5rem, 1.5vw, 1rem); 
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: clamp(1rem, 2vw, 1.5rem);
-                align-items: start;
-            }
             .about-section,
             .what-i-do-section,
             .projects-section,
-            .featured-content-section {
-                margin: 0; 
+            .featured-content-section,
+            .contact-section {
+                margin: 0;
                 padding: clamp(1rem, 2vw, 1.5rem);
                 max-width: none;
                 width: 100%;
@@ -557,34 +531,22 @@
                 grid-column: 2 / 3;
                 grid-row: 2 / 3;
             }
-            .contact-area-wrapper {
-                grid-column: 1 / 3;
+            .contact-section {
+                grid-column: 1 / -1;
                 grid-row: 3 / 4;
-                margin: 0 -1.5vw;
-                width: calc(100% + 3vw);
-                padding: 0;
-                background: none;
-                box-shadow: none;
-                border-radius: 0;
-                max-width: none;
-                align-self: stretch;
                 margin-bottom: clamp(1.5rem, 4vw, 2rem);
-            }
-            .contact-content-gradient-box {
-                width: 100%;
-                max-width: none;
-                padding: clamp(1rem, 2vw, 1.5rem);
             }
         }
         @media (min-width: 1200px) {
-            main { 
+            main {
                 gap: clamp(1.5rem, 2vw, 2rem);
-                padding: 0 clamp(0.75rem, 2vw, 1.25rem); 
+                padding: 0 clamp(0.75rem, 2vw, 1.25rem);
             }
             .about-section,
             .what-i-do-section,
             .projects-section,
-            .featured-content-section {
+            .featured-content-section,
+            .contact-section {
                 padding: clamp(1.5rem, 2vw, 2rem);
             }
              .nav-menu a {
@@ -596,9 +558,6 @@
             }
             .projects-grid {
                  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 350px), 1fr));
-            }
-            .contact-content-gradient-box {
-                padding: clamp(1.5rem, 2vw, 2rem);
             }
         }
         @media (min-width: 1920px) {
@@ -613,7 +572,7 @@
                 max-width: 700px;
             }
             main {
-                padding: 0 clamp(1rem, 2.5vw, 1.5rem); 
+                padding: 0 clamp(1rem, 2.5vw, 1.5rem);
             }
         }
         @media (max-height: 500px) and (orientation: landscape) {
@@ -622,7 +581,7 @@
             }
             .hero-content {
                 padding-top: clamp(40px, 10vw, 60px);
-                padding-bottom: clamp(40px, 10vw, 60px); 
+                padding-bottom: clamp(40px, 10vw, 60px);
             }
             .main-hero-heading {
                 font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -655,7 +614,6 @@
             </nav>
         </div>
     </header>
-
     <section id="home" class="hero-section" aria-labelledby="main-hero-heading">
         <div class="hero-content">
             <h1 id="main-hero-heading" class="main-hero-heading">WELCOME</h1>
@@ -666,13 +624,11 @@
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
-
     <main>
         <section id="about" class="about-section" aria-labelledby="about-heading">
             <h2 id="about-heading">Education</h2>
             <p>I'm a software engineering undergrad. I enjoy building things with code and solving problems though i hate uni so much hehe</p>
         </section>
-
         <section id="what-i-do" class="what-i-do-section" aria-labelledby="what-i-do-heading">
             <h2 id="what-i-do-heading">What I Do</h2>
             <ul class="what-i-do-list">
@@ -682,7 +638,6 @@
                 <li>Financial Markets (Forex Trading)</li>
             </ul>
         </section>
-
         <section id="projects" class="projects-section" aria-labelledby="projects-heading">
             <h2 id="projects-heading">My Projects</h2>
             <div class="projects-grid">
@@ -701,7 +656,6 @@
                 </div>
             </div>
         </section>
-
         <section id="featured" class="featured-content-section" aria-labelledby="featured-heading">
             <h2 id="featured-heading">Highlights</h2>
             <div class="featured-items-grid">
@@ -722,31 +676,26 @@
                 </div>
             </div>
         </section>
-
-        <section id="contact" class="contact-area-wrapper" aria-labelledby="contact-heading">
-            <div class="contact-content-gradient-box">
-                <h2 id="contact-heading" class="contact-title-in-box">Get In Touch</h2>
-                <div class="contact-icons">
-                    <a href="https://github.com/Kyalefnj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="images/git.png" alt="GitHub" loading="lazy"></a>
-                    <a href="https://www.instagram.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/ig.png" alt="Instagram" loading="lazy"></a>
-                    <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)" loading="lazy"></a>
-                    <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail" loading="lazy"></a>
-                </div>
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" class="contact-title">Get In Touch</h2>
+            <div class="contact-icons">
+                <a href="https://github.com/Kyalefnj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="images/git.png" alt="GitHub" loading="lazy"></a>
+                <a href="https://www.instagram.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/ig.png" alt="Instagram" loading="lazy"></a>
+                <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)" loading="lazy"></a>
+                <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail" loading="lazy"></a>
             </div>
         </section>
     </main>
-
     <footer>
         © Kyale MJ | All rights reserved | 2025
     </footer>
-
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-menu a');
-        const header = document.querySelector('.header-container'); 
+        const header = document.querySelector('.header-container');
         const sectionsToObserve = document.querySelectorAll(
-            '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-area-wrapper'
+            '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-section'
         );
         hamburger.addEventListener('click', () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -754,7 +703,7 @@
             navMenu.classList.toggle('active');
         });
         function getHeaderOffset() {
-            if (!header) return 80; 
+            if (!header) return 80;
             return header.offsetHeight + parseInt(getComputedStyle(header).top) + 15;
         }
         function updateActiveNavLinkOnScroll() {
@@ -771,10 +720,10 @@
             if (firstSection && scrollY < (firstSection.offsetTop - offset + 50) && firstSection.id === 'home') {
                  currentSectionId = 'home';
             }
-            if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 10) { 
+            if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 10) {
                 if (sectionsToObserve.length > 0) {
                      const lastSection = sectionsToObserve[sectionsToObserve.length - 1];
-                     if (document.querySelector(`.nav-menu a[href="#${lastSection.id}"]`)) {
+                     if (lastSection && document.querySelector(`.nav-menu a[href="#${lastSection.id}"]`)) {
                         currentSectionId = lastSection.id;
                      }
                 }
@@ -790,7 +739,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                if (href.startsWith('#')) { 
+                if (href.startsWith('#')) {
                     navLinks.forEach(nl => nl.classList.remove('active'));
                     link.classList.add('active');
                     if (navMenu.classList.contains('active')) {
@@ -817,7 +766,7 @@
         sectionsToObserve.forEach(section => intersectionObserver.observe(section));
         window.addEventListener('scroll', updateActiveNavLinkOnScroll, { passive: true });
         window.addEventListener('load', () => {
-            updateActiveNavLinkOnScroll(); 
+            updateActiveNavLinkOnScroll();
         });
     </script>
 </body>
