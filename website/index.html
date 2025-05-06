@@ -261,7 +261,6 @@
         }
 
         .about-section,
-        .contact-section,
         .what-i-do-section,
         .projects-section,
         .featured-content-section {
@@ -285,34 +284,70 @@
         .what-i-do-section.visible,
         .projects-section.visible,
         .featured-content-section.visible,
-        .contact-section.visible {
+        .contact-area-wrapper.visible { 
             opacity: 1;
             transform: translateY(0);
         }
 
+        .contact-area-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .contact-content-gradient-box {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
+            padding: clamp(1rem, 2vw, 1.5rem); 
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px; 
+            width: 90%; 
+            margin: 0 auto; 
+        }
+
+        .contact-title-in-box { 
+            color: #C67F3D;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+            text-align: center;
+            width: 100%; 
+            border-bottom: none; 
+            padding-bottom: 0; 
+            flex-shrink: 0; 
+        }
+
         @media (max-width: 991px) {
             .about-section,
-            .contact-section,
             .what-i-do-section,
             .projects-section,
             .featured-content-section {
                  margin-left: clamp(1rem, 4vw, 2rem);
                  margin-right: clamp(1rem, 4vw, 2rem);
             }
-            .contact-section { 
-                 margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            
+            .contact-area-wrapper { 
+                 margin-left: clamp(1rem, 4vw, 2rem);
+                 margin-right: clamp(1rem, 4vw, 2rem);
+                 margin-bottom: clamp(2rem, 6vw, 3rem);
             }
-        }
-
-        .contact-section {
-            align-items: center;
+            .contact-content-gradient-box {
+                width: 100%; 
+                max-width: 100%; 
+            }
         }
 
         .about-section h2,
         .what-i-do-section h2,
         .projects-section h2,
-        .featured-content-section h2,
-        .contact-section h2 {
+        .featured-content-section h2 {
             color: #C67F3D;
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.3rem, 3vw, 1.7rem);
@@ -322,10 +357,6 @@
             flex-shrink: 0;
             text-align: left;
             width: 100%;
-        }
-
-        .contact-section h2 {
-            text-align: center;
         }
 
         .about-section p {
@@ -490,13 +521,17 @@
                 background-attachment: scroll;
             }
             .about-section,
-            .contact-section,
             .what-i-do-section,
             .projects-section,
             .featured-content-section {
                  margin-left: clamp(0.75rem, 3vw, 1rem);
                  margin-right: clamp(0.75rem, 3vw, 1rem);
             }
+            .contact-area-wrapper {
+                 margin-left: clamp(0.75rem, 3vw, 1rem);
+                 margin-right: clamp(0.75rem, 3vw, 1rem);
+            }
+
             .main-hero-heading {
                 font-size: clamp(2rem, 6vw, 3rem);
             }
@@ -552,7 +587,6 @@
             }
             
             .about-section,
-            .contact-section,
             .what-i-do-section,
             .projects-section,
             .featured-content-section {
@@ -579,10 +613,22 @@
                 grid-column: 2 / 3;
                 grid-row: 2 / 3;
             }
-            .contact-section {
+            
+            .contact-area-wrapper {
                 grid-column: 1 / 3;
                 grid-row: 3 / 4;
+                margin: 0; 
+                padding: 0; 
+                background: none; 
+                box-shadow: none; 
+                border-radius: 0; 
+                max-width: none; 
+                width: 100%;
+                align-self: stretch; 
                 margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            }
+            .contact-content-gradient-box {
+                padding: clamp(1.5rem, 2vw, 2rem);
             }
         }
 
@@ -592,7 +638,6 @@
                 padding: 0 clamp(0.75rem, 2vw, 1.25rem); 
             }
             .about-section,
-            .contact-section,
             .what-i-do-section,
             .projects-section,
             .featured-content-section {
@@ -607,6 +652,9 @@
             }
             .projects-grid {
                  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 350px), 1fr));
+            }
+            .contact-content-gradient-box {
+                padding: clamp(1.5rem, 2vw, 2rem);
             }
         }
 
@@ -728,18 +776,20 @@
                 <div class="featured-item">
                     <h3>Favourite artist</h3>
                     <img src="images/swift.jpg" alt="Image of Taylor Swift">
-                    <p>I'm a swiftie.I know most of her songs and have achieved top 0.25% listener recognition on youtube.Such an achievement hehe</p>
+                    <p>I'm a swiftie.I know most of her songs and have achieved top 0.25% listener recognition on youtube. I had to shake this off</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
-            <h2 id="contact-heading">Get In Touch</h2>
-            <div class="contact-icons">
-                <a href="https://github.com/Kyalefnj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="images/git.png" alt="GitHub" loading="lazy"></a>
-                <a href="https://www.instagram.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/ig.png" alt="Instagram" loading="lazy"></a>
-                <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)" loading="lazy"></a>
-                <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail" loading="lazy"></a>
+        <section id="contact" class="contact-area-wrapper" aria-labelledby="contact-heading">
+            <div class="contact-content-gradient-box">
+                <h2 id="contact-heading" class="contact-title-in-box">Get In Touch</h2>
+                <div class="contact-icons">
+                    <a href="https://github.com/Kyalefnj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="images/git.png" alt="GitHub" loading="lazy"></a>
+                    <a href="https://www.instagram.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/ig.png" alt="Instagram" loading="lazy"></a>
+                    <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)" loading="lazy"></a>
+                    <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail" loading="lazy"></a>
+                </div>
             </div>
         </section>
     </main>
@@ -755,7 +805,7 @@
         const header = document.querySelector('.header-container'); 
 
         const sectionsToObserve = document.querySelectorAll(
-            '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-section'
+            '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-area-wrapper'
         );
 
         hamburger.addEventListener('click', () => {
