@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kyale</title>
     <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+
+    <link rel="preload" href="images/sebas.png.jpg" as="image">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -495,7 +498,7 @@
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            loading: lazy;
+            loading: lazy; /* This was already here, which is good */
         }
 
         .contact-icons a:hover img {
@@ -765,18 +768,18 @@
             <div class="featured-items-grid">
                 <div class="featured-item">
                     <h3>Favourite movie:Interstellar</h3>
-                    <img src="images/inter2.jpg" alt="Poster of the movie Interstellar" >
+                    <img src="images/inter2.jpg" alt="Poster of the movie Interstellar" loading="lazy">
                     <p>Hi earth its day 36!</p>
                 </div>
                 <div class="featured-item">
                     <h3>Favourite series:The 100</h3>
-                    <img src="images/100.jpg" alt="Promotional image for The 100 TV series">
+                    <img src="images/100.jpg" alt="Promotional image for The 100 TV series" loading="lazy">
                     <p>Has alot of tech which i love. A.L.I.E an AI manages to create the city of light helping humans escape pain at the cost of their free will.It has taught me much on the potential dystopian nature of artificial intelligence.You should watch it.Even if many of the characters didnt make it to the end, atleast they found sanctum, my location on <a href="https://x.com/kyalemj">X</a></p>
                 </div>
                 <div class="featured-item">
                     <h3>Favourite artist</h3>
-                    <img src="images/swift.jpg" alt="Image of Taylor Swift">
-                    <p>I'm a swiftie.I know most of her songs and have achieved top 0.25% listener recognition on youtube.Such an achievement hehe</p>
+                    <img src="images/swift.jpg" alt="Image of Taylor Swift" loading="lazy">
+                    <p>I'm a swiftie.I know most of her songs and have achieved top 0.25% listener recognition on youtube. I had to shake this off</p>
                 </div>
             </div>
         </section>
