@@ -566,8 +566,11 @@
 
         @media (max-width: 768px) {
              .header-container {
-                left: clamp(10px, 2vw, 20px);
-                right: clamp(10px, 2vw, 20px);
+                left: clamp(0.75rem, 3vw, 1rem);
+                right: clamp(0.75rem, 3vw, 1rem);
+                min-height: clamp(48px, 10vw, 60px);
+                padding-top: clamp(0.4rem, 1.8vw, 0.6rem);
+                padding-bottom: clamp(0.4rem, 1.8vw, 0.6rem);
              }
              .header-container > a.nav-link[aria-label="Instagram"],
              .header-container > a.nav-link[aria-label="X (Twitter)"] {
@@ -603,14 +606,26 @@
                   margin-left: 0;
                   margin-right: 0;
              }
+             .hero-content {
+                padding-left: clamp(0.75rem, 3vw, 1rem);
+                padding-right: clamp(0.75rem, 3vw, 1rem);
+             }
+             .about-section,
+             .what-i-do-section,
+             .projects-section,
+             .featured-content-section,
+             .contact-section {
+                 margin-left: clamp(0.75rem, 3vw, 1rem);
+                 margin-right: clamp(0.75rem, 3vw, 1rem);
+                 width: calc(100% - clamp(0.75rem, 3vw, 1rem)*2);
+             }
         }
         @media (max-width: 576px) {
              .header-container {
-                 left: clamp(5px, 1.5vw, 10px);
-                 right: clamp(5px, 1.5vw, 10px);
-                 padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.6rem, 2vw, 1rem);
-                 border-radius: 12px;
-                 gap: clamp(0.3rem, 0.8vw, 0.6rem);
+                 left: clamp(0.75rem, 3vw, 1rem);
+                 right: clamp(0.75rem, 3vw, 1rem);
+                 padding: clamp(0.35rem, 1.2vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+                 min-height: clamp(46px, 9.5vw, 56px);
              }
               .header-brand h3 {
                  font-size: clamp(1rem, 2vw, 1.2rem);
@@ -666,6 +681,10 @@
             }
              .contact-icons {
                  gap: clamp(1rem, 4vw, 1.5rem);
+             }
+             .hero-content {
+                padding-left: clamp(0.75rem, 3vw, 1rem);
+                padding-right: clamp(0.75rem, 3vw, 1rem);
              }
         }
         @media (min-width: 992px) {
@@ -783,7 +802,7 @@
         <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="X (Twitter)" data-tooltip="X (Twitter)">
             <img src="images/x.png" alt="X (Twitter)">
         </a>
-         <button id="search-toggle" aria-label="Toggle Search" data-tooltip="Search">
+         <button id="search-toggle" aria-label="Toggle Search" >
              <i data-feather="search"></i>
         </button>
     </header>
@@ -795,7 +814,7 @@
             and <br> watching sci-fi movies.I trade too </p>
             <a href="#about" class="hero-cta">VIEW MY WORK</a>
         </div>
-        <div class="scroll-down" data-tooltip="Scroll Down">
+        <div class="scroll-down" >
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
