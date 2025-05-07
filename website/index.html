@@ -59,7 +59,27 @@
             transform: translateX(0);
             max-width: 1000px;
             max-height: 1000px;
-            overflow: visible; /* Allow text to flow by default */
+            overflow: visible;
+            margin-right: auto;
+        }
+        .mobile-nav-icons {
+            display: none;
+            align-items: center;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            margin-left: clamp(5px, 1.5vw, 10px);
+        }
+        .mobile-search-trigger {
+            background: none;
+            border: none;
+            font-size: clamp(1rem, 2.8vw, 1.1rem);
+            cursor: pointer;
+            color: #C67F3D;
+            padding: clamp(0.3rem, 1vw, 0.4rem);
+            width: clamp(20px, 5vw, 30px); 
+            height: clamp(20px, 5vw, 30px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .nav-menu,
         .hamburger {
@@ -71,17 +91,17 @@
             max-height: 1000px;
             overflow: hidden;
         }
-
         .header-container.search-mode .header-content,
         .header-container.search-mode .nav-menu,
-        .header-container.search-mode .hamburger {
+        .header-container.search-mode .hamburger,
+        .header-container.search-mode .mobile-nav-icons {
             opacity: 0;
             visibility: hidden;
             transform: translateX(-20px);
             pointer-events: none;
             max-width: 0;
             max-height: 0;
-            overflow: hidden; /* Ensure hidden when shrinking */
+            overflow: hidden;
         }
         .search-input-wrapper {
             display: flex;
@@ -117,15 +137,7 @@
             font-size: clamp(0.8rem, 1.9vw, 0.9rem);
         }
         #perform-search-button {
-            background: none;
-            border: none;
-            color: #C67F3D;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            cursor: pointer;
-            padding: 8px 10px 8px 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: none;
         }
         .search-highlight {
             background-color: rgba(198, 127, 61, 0.7);
@@ -140,8 +152,8 @@
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             color: #C67F3D;
             margin: 0;
-            margin-left: clamp(10px, 2vw, 20px);
-            white-space: nowrap; /* Prevent brand name from wrapping */
+            margin-left: clamp(10px, 2vw, 15px);
+            white-space: nowrap;
         }
         .hamburger, .nav-menu a {
              cursor: pointer;
@@ -385,7 +397,7 @@
         .contact-icons {
             display: flex;
             justify-content: center;
-            gap: clamp(0.5rem, 2vw, 1.5rem);
+            gap: clamp(0.75rem, 3vw, 1.75rem);
             flex-wrap: wrap;
             padding-top: clamp(0.5rem, 1.5vw, 0.75rem);
         }
@@ -411,11 +423,35 @@
                  margin-right: clamp(1rem, 4vw, 2rem);
                  max-width: none;
             }
-             .header-content, .nav-menu, .hamburger {
+             .header-content, .nav-menu {
                 cursor: default;
             }
-            .header-content h3, .hamburger, .nav-menu a {
+            .header-content h3, .nav-menu a {
                 cursor: pointer;
+            }
+            .mobile-nav-icons {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .nav-menu {
+                 display: none;
+            }
+            .nav-menu.active {
+                display: block;
+            }
+        }
+         @media (max-width: 576px) {
+            .contact-icons {
+                gap: clamp(1rem, 4vw, 2rem);
+            }
+             .mobile-nav-icons {
+                margin-left: clamp(3px, 1vw, 5px);
+                gap: clamp(0.3rem, 1.5vw, 0.5rem);
+            }
+            .header-content h3 {
+                 margin-left: clamp(5px, 1.5vw, 10px);
             }
         }
         .about-section h2,
@@ -554,15 +590,6 @@
                 height: 85vh;
                 background-attachment: scroll;
             }
-            .about-section,
-            .what-i-do-section,
-            .projects-section,
-            .featured-content-section,
-            .contact-section {
-                 margin-left: clamp(0.75rem, 3vw, 1rem);
-                 margin-right: clamp(0.75rem, 3vw, 1rem);
-                 max-width: none;
-            }
             .main-hero-heading {
                 font-size: clamp(2rem, 6vw, 3rem);
             }
@@ -587,27 +614,28 @@
                 gap: clamp(1rem, 2vw, 1.5rem);
                 align-items: start;
             }
+            .mobile-nav-icons { display: none; }
             .hamburger { display: none; }
             .nav-menu {
-                display: flex;
+                display: flex !important;
                 align-items: center;
-                position: static;
-                background: none;
-                box-shadow: none;
-                width: auto;
-                height: auto;
-                margin-left: auto;
-                top: auto; left: auto; right: auto;
-                border-radius: 0;
-                overflow: visible;
+                position: static !important;
+                background: none !important;
+                box-shadow: none !important;
+                width: auto !important;
+                height: auto !important;
+                margin-left: auto !important;
+                top: auto !important; left: auto !important; right: auto !important;
+                border-radius: 0 !important;
+                overflow: visible !important;
                 cursor: default;
             }
              .header-container.search-mode .nav-menu {
-                opacity: 0;
-                visibility: hidden;
-                max-width: 0;
-                max-height: 0;
-                overflow: hidden;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                max-width: 0 !important;
+                max-height: 0 !important;
+                overflow: hidden !important;
             }
             .nav-menu ul {
                 flex-direction: row;
@@ -720,9 +748,13 @@
             <div class="header-content">
                 <h3>Kyale</h3>
             </div>
-            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="mobile-nav-icons">
+                <button class="mobile-search-trigger" aria-label="Open search">
+                </button>
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
             <nav class="nav-menu" id="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -817,6 +849,7 @@
         const sectionsToObserve = document.querySelectorAll(
             '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-section'
         );
+        const mobileSearchTrigger = document.querySelector('.mobile-search-trigger');
 
         hamburger.addEventListener('click', () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
@@ -925,14 +958,12 @@
         searchInputWrapper.className = 'search-input-wrapper';
         searchInputWrapper.innerHTML = `
             <input type="search" id="navbar-search-input-field" placeholder="Search page content...">
-            <button id="perform-search-button" aria-label="Perform search"><i class="fas fa-search"></i></button>
         `;
         if(headerContentForSearch && headerContentForSearch.parentNode === headerContainer) {
             headerContainer.insertBefore(searchInputWrapper, headerContentForSearch.nextSibling);
         }
 
         const searchInputField = document.getElementById('navbar-search-input-field');
-        const performSearchButton = document.getElementById('perform-search-button');
 
         let isSearchMode = false;
         let originalNavMenuState = '';
@@ -949,7 +980,7 @@
             searchInputField.setAttribute('placeholder', searchActivePlaceholder);
             searchInputField.focus();
 
-            if (window.getComputedStyle(hamburger).display !== 'none') {
+            if (window.getComputedStyle(hamburger).display !== 'none' || window.getComputedStyle(mobileSearchTrigger).display !== 'none') {
                 if (navMenu.classList.contains('active')) {
                     originalNavMenuState = 'mobile-active';
                     navMenu.classList.remove('active');
@@ -970,29 +1001,40 @@
             searchInputField.setAttribute('placeholder', defaultPlaceholder);
             removeHighlights();
 
-            if (originalNavMenuState === 'mobile-active' && window.getComputedStyle(hamburger).display !== 'none') {
+            if (originalNavMenuState === 'mobile-active' && (window.getComputedStyle(hamburger).display !== 'none' || window.getComputedStyle(mobileSearchTrigger).display !== 'none')) {
                 navMenu.classList.add('active');
                 hamburger.setAttribute('aria-expanded', 'true');
             }
             originalNavMenuState = '';
         }
-        
+
         headerContainer.addEventListener('click', (event) => {
             if (isSearchMode) return;
-        
             const target = event.target;
-        
-            if (target.closest('.hamburger') ||
+            if (
+                target.closest('.hamburger') ||
+                target.closest('.mobile-search-trigger') ||
                 target.closest('.nav-menu a') ||
                 (window.getComputedStyle(hamburger).display === 'none' && target.closest('.nav-menu'))
-               ) {
+            ) {
                 return;
             }
-        
             if (target.closest('.header-content') || target === headerContainer) {
                 activateSearchMode();
             }
         });
+
+        if(mobileSearchTrigger){
+            mobileSearchTrigger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                if (isSearchMode) {
+                    deactivateSearchMode();
+                } else {
+                    activateSearchMode();
+                }
+            });
+        }
+
 
         document.addEventListener('click', (event) => {
             if (isSearchMode && !headerContainer.contains(event.target)) {
@@ -1105,9 +1147,6 @@
             }
         }
 
-        if(performSearchButton) {
-            performSearchButton.addEventListener('click', performSearch);
-        }
         if(searchInputField) {
             searchInputField.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
