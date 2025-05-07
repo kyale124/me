@@ -134,20 +134,7 @@
         .nav-link.active {
             color: #C67F3D;
         }
-        /*
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0px;
-            left: 0;
-            transform: none;
-            width: 100%;
-            max-width: none;
-            height: 2.5px;
-            background-color: #C67F3D;
-            border-radius: 1px;
-        }
-        */
+
 
         #search-toggle {
             background: none;
@@ -578,6 +565,14 @@
         }
 
         @media (max-width: 768px) {
+             .header-container {
+                left: clamp(10px, 2vw, 20px);
+                right: clamp(10px, 2vw, 20px);
+             }
+             .header-container > a.nav-link[aria-label="Instagram"],
+             .header-container > a.nav-link[aria-label="X (Twitter)"] {
+                 display: none;
+             }
              .header-center-content {
                 flex-grow: 0;
                 margin-left: auto;
@@ -611,8 +606,8 @@
         }
         @media (max-width: 576px) {
              .header-container {
-                 left: clamp(10px, 3vw, 15px);
-                 right: clamp(10px, 3vw, 15px);
+                 left: clamp(5px, 1.5vw, 10px);
+                 right: clamp(5px, 1.5vw, 10px);
                  padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.6rem, 2vw, 1rem);
                  border-radius: 12px;
                  gap: clamp(0.3rem, 0.8vw, 0.6rem);
