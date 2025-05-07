@@ -52,7 +52,15 @@
         .header-container.search-mode {
             cursor: default;
         }
-        .header-content,
+        .header-content {
+            transition: opacity 0.3s ease-out, visibility 0s linear 0.3s, transform 0.3s ease-out, max-width 0.3s ease-out, max-height 0.3s ease-out;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            max-width: 1000px;
+            max-height: 1000px;
+            overflow: visible; /* Allow text to flow by default */
+        }
         .nav-menu,
         .hamburger {
             transition: opacity 0.3s ease-out, visibility 0s linear 0.3s, transform 0.3s ease-out, max-width 0.3s ease-out, max-height 0.3s ease-out;
@@ -63,6 +71,7 @@
             max-height: 1000px;
             overflow: hidden;
         }
+
         .header-container.search-mode .header-content,
         .header-container.search-mode .nav-menu,
         .header-container.search-mode .hamburger {
@@ -72,6 +81,7 @@
             pointer-events: none;
             max-width: 0;
             max-height: 0;
+            overflow: hidden; /* Ensure hidden when shrinking */
         }
         .search-input-wrapper {
             display: flex;
@@ -131,6 +141,7 @@
             color: #C67F3D;
             margin: 0;
             margin-left: clamp(10px, 2vw, 20px);
+            white-space: nowrap; /* Prevent brand name from wrapping */
         }
         .hamburger, .nav-menu a {
              cursor: pointer;
@@ -384,6 +395,7 @@
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            loading: lazy;
         }
         .contact-icons a:hover img {
             box-shadow: 0 0 12px #C67F3D;
