@@ -266,9 +266,6 @@
             overflow: hidden;
             box-shadow: none;
             margin-bottom: 0;
-            opacity: 1;
-            transform: translateY(0);
-            transition: none;
         }
         .hero-section::before {
             content: '';
@@ -309,8 +306,6 @@
             text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.6);
             margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
             line-height: 1.2;
-            opacity: 1;
-            transform: translateY(0);
         }
         .hero-subheading {
             font-family: 'Poppins', sans-serif;
@@ -320,8 +315,6 @@
             margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
             max-width: 600px;
             line-height: 1.7;
-             opacity: 1;
-            transform: translateY(0);
         }
         .hero-cta {
             display: inline-block;
@@ -337,8 +330,6 @@
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-             opacity: 1;
-            transform: translateY(0);
         }
         .hero-cta:hover,
         .hero-cta:focus {
@@ -378,6 +369,9 @@
             align-items: stretch;
             gap: clamp(1.5rem, 4vw, 2rem);
             padding-top: clamp(1.5rem, 4vw, 2rem);
+            position: relative;
+            z-index: 5;
+            background-color: #1d1f20;
         }
         .about-section,
         .what-i-do-section,
@@ -394,9 +388,6 @@
             border-radius: 8px;
             display: flex;
             flex-direction: column;
-            opacity: 1;
-            transform: translateY(0);
-            transition: none;
             width: calc(100% - clamp(1.5rem, 5vw, 2.5rem)*2);
              margin-left: clamp(1.5rem, 5vw, 2.5rem);
              margin-right: clamp(1.5rem, 5vw, 2.5rem);
@@ -562,6 +553,9 @@
             color: #bbb;
             background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(70, 70, 70, 0.7));
             font-size: clamp(0.8rem, 2vw, 1rem);
+            position: relative;
+            z-index: 5;
+            background-color: #1d1f20;
         }
 
         @media (max-width: 768px) {
@@ -652,7 +646,7 @@
              }
             .hero-section {
                 height: 85vh;
-                background-attachment: scroll;
+                 /* background-attachment: scroll;  Removed to allow fixed on mobile */
             }
             .main-hero-heading {
                 font-size: clamp(2rem, 6vw, 3rem);
@@ -763,6 +757,16 @@
             padding: 0.1em 0.2em;
             border-radius: 3px;
             font-weight: bold;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+            will-change: opacity, transform;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -982,8 +986,43 @@
         window.addEventListener('load', () => {
              updateActiveNavLinkOnScroll();
              feather.replace();
-             document.querySelectorAll('.about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-section')
-                .forEach(sec => sec.style.opacity = 1);
+
+            const revealElements = document.querySelectorAll(
+                '.main-hero-heading, .hero-subheading, .hero-cta, ' +
+                'main section > h2, ' +
+                '.about-section > p, ' +
+                '.what-i-do-list > li, ' +
+                '.projects-grid > .project-item, ' +
+                '.featured-items-grid > .featured-item, ' +
+                '.contact-section .contact-icons > a, .contact-section .contact-icons > img'
+            );
+
+            revealElements.forEach(el => {
+                el.classList.add('reveal-on-scroll');
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+            revealElements.forEach(el => {
+                if (el) {
+                    scrollObserver.observe(el);
+                }
+            });
         });
 
         if (scrollDownArrow && aboutSectionForScroll) {
