@@ -46,6 +46,83 @@
             align-items: center;
             justify-content: space-between;
             min-height: clamp(35px, 8vw, 45px);
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .header-container.search-mode {
+            cursor: default;
+        }
+        .header-content,
+        .nav-menu,
+        .hamburger {
+            transition: opacity 0.3s ease-out, visibility 0s linear 0.3s, transform 0.3s ease-out, max-width 0.3s ease-out, max-height 0.3s ease-out;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            max-width: 1000px;
+            max-height: 1000px;
+            overflow: hidden;
+        }
+        .header-container.search-mode .header-content,
+        .header-container.search-mode .nav-menu,
+        .header-container.search-mode .hamburger {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-20px);
+            pointer-events: none;
+            max-width: 0;
+            max-height: 0;
+        }
+        .search-input-wrapper {
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease-in 0.1s, visibility 0s linear 0.1s, transform 0.3s ease-in 0.1s;
+            height: 100%;
+        }
+        .header-container.search-mode .search-input-wrapper {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            cursor: text;
+        }
+        #navbar-search-input-field {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: #e0e0e0;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            padding: 8px 5px;
+            outline: none;
+            width: 100%;
+            cursor: text;
+        }
+        #navbar-search-input-field::placeholder {
+            color: #aaa;
+            font-style: italic;
+            font-size: clamp(0.8rem, 1.9vw, 0.9rem);
+        }
+        #perform-search-button {
+            background: none;
+            border: none;
+            color: #C67F3D;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            cursor: pointer;
+            padding: 8px 10px 8px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-highlight {
+            background-color: rgba(198, 127, 61, 0.7);
+            color: #1d1f20;
+            padding: 0.1em 0.2em;
+            border-radius: 3px;
+            font-weight: bold;
         }
         .header-content h3 {
             font-family: 'Roboto Slab', serif;
@@ -55,11 +132,13 @@
             margin: 0;
             margin-left: clamp(10px, 2vw, 20px);
         }
+        .hamburger, .nav-menu a {
+             cursor: pointer;
+        }
         .hamburger {
             background: none;
             border: none;
             font-size: clamp(1rem, 3vw, 1.2rem);
-            cursor: pointer;
             color: #C67F3D;
             padding: clamp(0.3rem, 1vw, 0.4rem);
             display: block;
@@ -77,6 +156,9 @@
         }
         .nav-menu.active {
             display: block;
+            overflow: visible;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
         .nav-menu ul {
             list-style: none;
@@ -153,11 +235,7 @@
             left: 0;
             width: 100%;
             height: 20%;
-            background: linear-gradient(
-                to bottom,
-                transparent,
-                #1d1f20
-            );
+            background: linear-gradient( to bottom, transparent, #1d1f20 );
             z-index: 1;
         }
         .hero-content {
@@ -226,6 +304,7 @@
             color: #e0e0e0;
             font-size: clamp(1rem, 3vw, 1.5rem);
             animation: bounce 2s infinite;
+            cursor: pointer;
         }
         @keyframes fadeInUp {
             to {
@@ -235,13 +314,13 @@
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
+                transform: translateX(-50%) translateY(0);
             }
             40% {
-                transform: translateY(-10px);
+                transform: translateX(-50%) translateY(-10px);
             }
             60% {
-                transform: translateY(-5px);
+                transform: translateX(-50%) translateY(-5px);
             }
         }
         main {
@@ -305,7 +384,6 @@
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            loading: lazy;
         }
         .contact-icons a:hover img {
             box-shadow: 0 0 12px #C67F3D;
@@ -320,6 +398,12 @@
                  margin-left: clamp(1rem, 4vw, 2rem);
                  margin-right: clamp(1rem, 4vw, 2rem);
                  max-width: none;
+            }
+             .header-content, .nav-menu, .hamburger {
+                cursor: default;
+            }
+            .header-content h3, .hamburger, .nav-menu a {
+                cursor: pointer;
             }
         }
         .about-section h2,
@@ -493,7 +577,8 @@
             }
             .hamburger { display: none; }
             .nav-menu {
-                display: block;
+                display: flex;
+                align-items: center;
                 position: static;
                 background: none;
                 box-shadow: none;
@@ -502,6 +587,15 @@
                 margin-left: auto;
                 top: auto; left: auto; right: auto;
                 border-radius: 0;
+                overflow: visible;
+                cursor: default;
+            }
+             .header-container.search-mode .nav-menu {
+                opacity: 0;
+                visibility: hidden;
+                max-width: 0;
+                max-height: 0;
+                overflow: hidden;
             }
             .nav-menu ul {
                 flex-direction: row;
@@ -517,6 +611,7 @@
                 width: auto;
                 min-width: clamp(70px, 8vw, 90px);
                 height: clamp(32px, 4.5vw, 38px);
+                cursor: pointer;
             }
             .about-section,
             .what-i-do-section,
@@ -641,8 +736,8 @@
     <main>
         <section id="about" class="about-section" aria-labelledby="about-heading">
             <h2 id="about-heading">About me</h2>
-<p>I'm a software engineering undergrad.I enjoy coding though i hate uni so much hehe. In my free time, I read physics books, especially topics like black holes and theoretical space-time. I'm also fascinated by AI and its future impact. I watch a lot of sci-fi movies, mostly centered on space and technology, and I occasionally binge true crime documentaries.I trade also, it's been humbling me alot</p>
-      </section>
+            <p>I'm a software engineering undergrad.I enjoy coding though i hate uni so much hehe. In my free time, I read physics books, especially topics like black holes and theoretical space-time. I'm also fascinated by AI and its future impact. I watch a lot of sci-fi movies, mostly centered on space and technology, and I occasionally binge true crime documentaries.I trade also, it's been humbling me alot</p>
+        </section>
         <section id="what-i-do" class="what-i-do-section" aria-labelledby="what-i-do-heading">
             <h2 id="what-i-do-heading">What I Do</h2>
             <ul class="what-i-do-list">
@@ -680,7 +775,7 @@
                 <div class="featured-item">
                     <h3>Favourite series: The 100</h3>
                     <img src="images/100.jpg" alt="Promotional image for The 100 TV series" loading="lazy">
-<p>It has a lot of futuristic tech, which I love. A.L.I.E an AI, creates the City of Light to help people escape pain but at the cost of their free will. It’s a cool take on the more dystopian sides of AI. Even though many characters didn’t make it to the end, at least some found Sanctum, my location on <a href="https://x.com/kyalemj">X</a>.</p>
+                    <p>It has a lot of futuristic tech, which I love. A.L.I.E an AI, creates the City of Light to help people escape pain but at the cost of their free will. It’s a cool take on the more dystopian sides of AI. Even though many characters didn’t make it to the end, at least some found Sanctum, my location on <a href="https://x.com/kyalemj">X</a>.</p>
                 </div>
                 <div class="featured-item">
                     <h3>Favourite artist</h3>
@@ -710,29 +805,35 @@
         const sectionsToObserve = document.querySelectorAll(
             '.hero-section, .about-section, .what-i-do-section, .projects-section, .featured-content-section, .contact-section'
         );
+
         hamburger.addEventListener('click', () => {
             const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !isExpanded);
+            hamburger.setAttribute('aria-expanded', String(!isExpanded));
             navMenu.classList.toggle('active');
         });
+
         function getHeaderOffset() {
             if (!header) return 80;
             return header.offsetHeight + parseInt(getComputedStyle(header).top) + 15;
         }
+
         function updateActiveNavLinkOnScroll() {
             const scrollY = window.pageYOffset;
             const offset = getHeaderOffset();
             let currentSectionId = '';
+
             sectionsToObserve.forEach(section => {
                 const sectionTop = section.offsetTop;
                 if (scrollY >= (sectionTop - offset)) {
                     currentSectionId = section.id;
                 }
             });
+
             const firstSection = sectionsToObserve[0];
             if (firstSection && scrollY < (firstSection.offsetTop - offset + 50) && firstSection.id === 'home') {
                  currentSectionId = 'home';
             }
+
             if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 10) {
                 if (sectionsToObserve.length > 0) {
                      const lastSection = sectionsToObserve[sectionsToObserve.length - 1];
@@ -741,6 +842,7 @@
                      }
                 }
             }
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 const linkHref = link.getAttribute('href');
@@ -749,6 +851,7 @@
                 }
             });
         }
+
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
@@ -762,11 +865,13 @@
                 }
             });
         });
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
             threshold: 0.1
         };
+
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -775,12 +880,235 @@
                 }
             });
         };
+
         const intersectionObserver = new IntersectionObserver(observerCallback, observerOptions);
         sectionsToObserve.forEach(section => intersectionObserver.observe(section));
+
         window.addEventListener('scroll', updateActiveNavLinkOnScroll, { passive: true });
         window.addEventListener('load', () => {
             updateActiveNavLinkOnScroll();
         });
+
+        const scrollDownArrow = document.querySelector('.scroll-down');
+        const aboutSectionForScroll = document.getElementById('about');
+
+        if (scrollDownArrow && aboutSectionForScroll) {
+            scrollDownArrow.addEventListener('click', (e) => {
+                e.preventDefault();
+                const headerOffsetVal = getHeaderOffset();
+                const elementPosition = aboutSectionForScroll.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffsetVal;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        const headerContainer = document.querySelector('.header-container');
+        const headerContentForSearch = document.querySelector('.header-content');
+
+        const searchInputWrapper = document.createElement('div');
+        searchInputWrapper.className = 'search-input-wrapper';
+        searchInputWrapper.innerHTML = `
+            <input type="search" id="navbar-search-input-field" placeholder="Search page content...">
+            <button id="perform-search-button" aria-label="Perform search"><i class="fas fa-search"></i></button>
+        `;
+        if(headerContentForSearch && headerContentForSearch.parentNode === headerContainer) {
+            headerContainer.insertBefore(searchInputWrapper, headerContentForSearch.nextSibling);
+        }
+
+        const searchInputField = document.getElementById('navbar-search-input-field');
+        const performSearchButton = document.getElementById('perform-search-button');
+
+        let isSearchMode = false;
+        let originalNavMenuState = '';
+        let currentHighlights = [];
+        const defaultPlaceholder = "Search page content...";
+        const searchActivePlaceholder = "Search page content... (Click outside to close)";
+
+        function activateSearchMode() {
+            if (isSearchMode) return;
+            isSearchMode = true;
+            headerContainer.classList.add('search-mode');
+            searchInputField.value = '';
+            removeHighlights();
+            searchInputField.setAttribute('placeholder', searchActivePlaceholder);
+            searchInputField.focus();
+
+            if (window.getComputedStyle(hamburger).display !== 'none') {
+                if (navMenu.classList.contains('active')) {
+                    originalNavMenuState = 'mobile-active';
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                } else {
+                    originalNavMenuState = 'mobile-inactive';
+                }
+            } else {
+                originalNavMenuState = 'desktop';
+            }
+        }
+
+        function deactivateSearchMode() {
+            if (!isSearchMode) return;
+            isSearchMode = false;
+            headerContainer.classList.remove('search-mode');
+            searchInputField.value = '';
+            searchInputField.setAttribute('placeholder', defaultPlaceholder);
+            removeHighlights();
+
+            if (originalNavMenuState === 'mobile-active' && window.getComputedStyle(hamburger).display !== 'none') {
+                navMenu.classList.add('active');
+                hamburger.setAttribute('aria-expanded', 'true');
+            }
+            originalNavMenuState = '';
+        }
+        
+        headerContainer.addEventListener('click', (event) => {
+            if (isSearchMode) return;
+        
+            const target = event.target;
+        
+            if (target.closest('.hamburger') ||
+                target.closest('.nav-menu a') ||
+                (window.getComputedStyle(hamburger).display === 'none' && target.closest('.nav-menu'))
+               ) {
+                return;
+            }
+        
+            if (target.closest('.header-content') || target === headerContainer) {
+                activateSearchMode();
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (isSearchMode && !headerContainer.contains(event.target)) {
+                deactivateSearchMode();
+            }
+        });
+
+        function removeHighlights() {
+            currentHighlights.forEach(nodeInfo => {
+                const parent = nodeInfo.parent;
+                if (parent && parent.contains(nodeInfo.node)) {
+                    parent.replaceChild(document.createTextNode(nodeInfo.node.textContent), nodeInfo.node);
+                    parent.normalize();
+                }
+            });
+            currentHighlights = [];
+            document.querySelectorAll('[data-search-match-container="true"]').forEach(el => el.removeAttribute('data-search-match-container'));
+        }
+
+        function highlightTextInNode(node, regex) {
+            let matchFoundInNode = false;
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent;
+                if (regex.test(text)) {
+                    matchFoundInNode = true;
+                    const fragment = document.createDocumentFragment();
+                    let lastIndex = 0;
+                    text.replace(regex, (match, p1, offset) => {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIndex, offset)));
+                        const span = document.createElement('span');
+                        span.className = 'search-highlight';
+                        span.textContent = match;
+                        currentHighlights.push({ node: span, parent: node.parentNode });
+                        fragment.appendChild(span);
+                        lastIndex = offset + match.length;
+                        return match;
+                    });
+                    fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                    node.parentNode.replaceChild(fragment, node);
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                if (node.matches('script, style, noscript, iframe, canvas, .header-container, footer, .search-highlight')) {
+                    return false;
+                }
+                Array.from(node.childNodes).forEach(child => {
+                    if (highlightTextInNode(child, regex)) {
+                        matchFoundInNode = true;
+                    }
+                });
+                if (matchFoundInNode && !node.closest('.search-highlight')) {
+                     node.setAttribute('data-search-match-container', 'true');
+                }
+            }
+            return matchFoundInNode;
+        }
+
+        function performSearch() {
+            const searchTerm = searchInputField.value.trim();
+            removeHighlights();
+
+            if (!searchTerm) {
+                searchInputField.focus();
+                searchInputField.setAttribute('placeholder', searchActivePlaceholder);
+                return;
+            }
+
+            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            const contentAreas = document.querySelectorAll('main section, .hero-content p, .hero-content h1');
+            let firstMatchElement = null;
+            let foundMatchOverall = false;
+
+            contentAreas.forEach(area => {
+                if (highlightTextInNode(area, regex)) {
+                    foundMatchOverall = true;
+                    if (!firstMatchElement) {
+                        const highlightedSpan = area.querySelector('.search-highlight');
+                        if (highlightedSpan) {
+                             let scrollTarget = highlightedSpan;
+                             while(scrollTarget.parentElement && (window.getComputedStyle(scrollTarget).display === 'inline' || scrollTarget.offsetHeight === 0) && scrollTarget.tagName !== 'BODY' && scrollTarget.tagName !== 'MAIN' && !scrollTarget.matches('section, div.project-item, div.featured-item')) {
+                                if(scrollTarget.parentElement.closest('.search-highlight')) break;
+                                scrollTarget = scrollTarget.parentElement;
+                                if(scrollTarget.offsetTop > 0 && window.getComputedStyle(scrollTarget).display !== 'inline') break;
+                             }
+                             firstMatchElement = scrollTarget;
+                        } else {
+                            firstMatchElement = area.querySelector('[data-search-match-container="true"]') || area;
+                        }
+                    }
+                }
+            });
+
+            if (firstMatchElement) {
+                const headerOffsetVal = getHeaderOffset();
+                const elementRect = firstMatchElement.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                const scrollToPosition = absoluteElementTop - headerOffsetVal - 20;
+
+                window.scrollTo({
+                    top: scrollToPosition,
+                    behavior: 'smooth'
+                });
+            } else if (!foundMatchOverall && searchTerm) {
+                searchInputField.value = '';
+                searchInputField.setAttribute('placeholder', 'Term not found. Try again. (Click outside to close)');
+                setTimeout(() => {
+                    if (isSearchMode) {
+                        searchInputField.setAttribute('placeholder', searchActivePlaceholder);
+                    }
+                }, 2500);
+            }
+        }
+
+        if(performSearchButton) {
+            performSearchButton.addEventListener('click', performSearch);
+        }
+        if(searchInputField) {
+            searchInputField.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    performSearch();
+                }
+            });
+            searchInputField.addEventListener('input', () => {
+                if(isSearchMode && searchInputField.value === '') {
+                    searchInputField.setAttribute('placeholder', searchActivePlaceholder);
+                }
+            });
+        }
     </script>
 </body>
 </html>
