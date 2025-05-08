@@ -472,7 +472,7 @@
             flex-grow: 1;
         }
         .featured-item {
-            background: rgba(0,0,0,0.35);
+            background-color: rgba(0,0,0,0.5); 
             padding: clamp(1rem, 2vw, 1.5rem);
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -516,7 +516,7 @@
             flex-grow: 1;
         }
         .project-item {
-            background: rgba(255, 255, 255, 0.03);
+            background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(198, 127, 61, 0.1);
             border-radius: 6px;
             padding: clamp(1rem, 1.5vw, 1.25rem);
@@ -646,7 +646,6 @@
              }
             .hero-section {
                 height: 85vh;
-                 /* background-attachment: scroll;  Removed to allow fixed on mobile */
             }
             .main-hero-heading {
                 font-size: clamp(2rem, 6vw, 3rem);
@@ -767,6 +766,30 @@
         .reveal-on-scroll.is-visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        @keyframes heroTextEntry {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .hero-text-animate {
+          opacity: 0;
+          will-change: opacity, transform;
+        }
+
+        #main-hero-heading.hero-text-animate {
+          animation: heroTextEntry 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0.2s forwards;
+        }
+
+        .hero-subheading.hero-text-animate {
+          animation: heroTextEntry 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0.4s forwards;
         }
     </style>
 </head>
@@ -987,6 +1010,16 @@
              updateActiveNavLinkOnScroll();
              feather.replace();
 
+            const heroHeading = document.getElementById('main-hero-heading');
+            const heroSubheading = document.querySelector('.hero-content .hero-subheading');
+
+            if (heroHeading) {
+                heroHeading.classList.add('hero-text-animate');
+            }
+            if (heroSubheading) {
+                heroSubheading.classList.add('hero-text-animate');
+            }
+
             const revealElements = document.querySelectorAll(
                 '.main-hero-heading, .hero-subheading, .hero-cta, ' +
                 'main section > h2, ' +
@@ -998,7 +1031,9 @@
             );
 
             revealElements.forEach(el => {
-                el.classList.add('reveal-on-scroll');
+                if (!el.classList.contains('hero-text-animate')) { 
+                    el.classList.add('reveal-on-scroll');
+                }
             });
 
             const observerOptions = {
@@ -1010,7 +1045,10 @@
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
+                        if (!entry.target.classList.contains('hero-text-animate')) { 
+                           entry.target.classList.add('is-visible');
+                        } else if (entry.target.classList.contains('hero-text-animate') && getComputedStyle(entry.target).animationPlayState === 'paused') {
+                        }
                         observer.unobserve(entry.target);
                     }
                 });
