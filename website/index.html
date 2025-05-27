@@ -681,6 +681,7 @@
         @media (min-width: 992px) {
             .hero-section {
                 align-items: flex-start;
+                background-attachment: scroll;
             }
             .hero-content {
                 margin-left: 0;
@@ -850,7 +851,7 @@
         <section id="about" class="about-section" aria-labelledby="about-heading">
             <h2 id="about-heading">About me</h2>
             <p>I'm Kyale a software engineering undergrad.I live in Nairobi and dream of getting out. I enjoy coding. In my free time, I read physics books, especially topics like black holes and theoretical space-time. I'm also learning AI, started a while ago. I watch sci-fi movies,  on space and tech.I trade also, it's been humbling me alot but not for too long.My strategy is SMC i.e market structure, orderblocks, liquidity and MTF.I
-                left social media on january due to my mental health and focusing on my goals and used twitter instead but i decided I might  leave it today because its not what i excepcted it to do, I thought i would find self improvement groups but although there are, my feed is filled with a lot of unecessary stuff.
+                left social media on january due to my mental health and focusing on my goals and used twitter instead but i decided to leave it today because its not what i excepcted it to do, I thought i would find self improvement groups but although there are, my feed is filled with a lot of unecessary stuff.Thanks foe being a follower. See you on the other side
             </p>
         </section>
         <section id="what-i-do" class="what-i-do-section" aria-labelledby="what-i-do-heading">
@@ -1214,7 +1215,7 @@
                        if (firstHighlightSpan) {
                           let parentTarget = firstHighlightSpan.parentElement;
                            while(parentTarget && parentTarget.parentElement && (window.getComputedStyle(parentTarget).display === 'inline' || parentTarget.offsetHeight < 10) && parentTarget.tagName !== 'BODY' && parentTarget.tagName !== 'MAIN' && !parentTarget.matches('section, div.project-item, div.featured-item, p, h1, h2, h3, li')) {
-                              parentTarget = parentParent.parentElement;
+                              parentTarget = parentTarget.parentElement;
                           }
                           finalScrollTarget = parentTarget || firstHighlightSpan;
                       }
