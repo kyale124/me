@@ -26,7 +26,7 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: #1d1f20;
+            background: #080808;
             color: #e0e0e0;
             line-height: 1.6;
             min-height: 100vh;
@@ -285,7 +285,7 @@
             left: 0;
             width: 100%;
             height: 20%;
-            background: linear-gradient( to bottom, transparent, #1d1f20 );
+            background: linear-gradient( to bottom, transparent, #080808 );
             z-index: 1;
         }
         .hero-content {
@@ -372,27 +372,55 @@
             padding-top: clamp(1.5rem, 4vw, 2rem);
             position: relative;
             z-index: 5;
-            background-color: #1d1f20;
         }
+        
         .about-section,
         .what-i-do-section,
         .projects-section,
         .featured-content-section,
         .contact-section {
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: clamp(1.2rem, 2.5vw, 1.5rem);
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.9));
+            background: transparent;
             border: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
+            box-shadow: none;
+            border-radius: 0;
             display: flex;
             flex-direction: column;
+            padding: clamp(1.2rem, 2.5vw, 1.5rem);
             width: calc(100% - clamp(1.5rem, 5vw, 2.5rem)*2);
-             margin-left: clamp(1.5rem, 5vw, 2.5rem);
-             margin-right: clamp(1.5rem, 5vw, 2.5rem);
+            margin-left: clamp(1.5rem, 5vw, 2.5rem);
+            margin-right: clamp(1.5rem, 5vw, 2.5rem);
         }
+        
+        .featured-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            box-shadow: none;
+            border: 1px solid rgba(198, 127, 61, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .featured-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .project-item {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(198, 127, 61, 0.05);
+            border-radius: 4px;
+            box-shadow: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: clamp(1rem, 1.5vw, 1.25rem);
+            display: flex;
+            flex-direction: column;
+        }
+        .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
         .contact-section {
             align-items: center;
             margin-bottom: clamp(2.5rem, 7vw, 3.5rem);
@@ -462,7 +490,7 @@
             white-space: nowrap;
         }
         .featured-content-section {
-            background: linear-gradient(135deg, #2a2c2e, #383a3c);
+            background: transparent;
             padding: clamp(1.5rem, 3vw, 2rem);
         }
         .featured-items-grid {
@@ -471,29 +499,6 @@
             gap: clamp(1rem, 2vw, 1.5rem);
             margin-top: clamp(0.75rem, 2vw, 1rem);
             flex-grow: 1;
-        }
-        .featured-item {
-            background-color: rgba(0,0,0,0.5); 
-            padding: clamp(1rem, 2vw, 1.5rem);
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .featured-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4), 0 0 10px rgba(198, 127, 61, 0.2);
-        }
-        .featured-item h3 {
-            color: #e0e0e0;
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            width: auto;
         }
         .featured-item img {
             width: 100%;
@@ -516,34 +521,6 @@
             width: 100%;
             flex-grow: 1;
         }
-        .project-item {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(198, 127, 61, 0.1);
-            border-radius: 6px;
-            padding: clamp(1rem, 1.5vw, 1.25rem);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.25), 0 0 8px rgba(198, 127, 61, 0.15);
-        }
-        .project-item h3 {
-            color: #C67F3D;
-            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            text-align: left;
-        }
-        .project-item p {
-            color: #b0b0b0;
-            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
-            flex-grow: 1;
-            line-height: 1.5;
-        }
         footer {
             text-align: center;
             padding: clamp(1rem, 2vw, 2rem) clamp(0.5rem, 2vw, 1rem);
@@ -556,10 +533,9 @@
             font-size: clamp(0.8rem, 2vw, 1rem);
             position: relative;
             z-index: 5;
-            background-color: #1d1f20;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
              .header-container {
                 left: clamp(0.75rem, 3vw, 1rem);
                 right: clamp(0.75rem, 3vw, 1rem);
@@ -605,16 +581,38 @@
                 padding-left: clamp(0.75rem, 3vw, 1rem);
                 padding-right: clamp(0.75rem, 3vw, 1rem);
              }
-             .about-section,
-             .what-i-do-section,
-             .projects-section,
-             .featured-content-section,
-             .contact-section {
-                 margin-left: clamp(0.75rem, 3vw, 1rem);
-                 margin-right: clamp(0.75rem, 3vw, 1rem);
-                 width: calc(100% - clamp(0.75rem, 3vw, 1rem)*2);
-             }
+
+            .about-section,
+            .what-i-do-section,
+            .projects-section,
+            .featured-content-section,
+            .contact-section {
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(50, 50, 50, 0.7));
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+                border-radius: 8px;
+                margin-left: clamp(0.75rem, 3vw, 1rem);
+                margin-right: clamp(0.75rem, 3vw, 1rem);
+                width: calc(100% - clamp(0.75rem, 3vw, 1rem)*2);
+            }
+
+            .featured-item {
+                background-color: rgba(0,0,0,0.5);
+                border: none;
+                box-shadow: none;
+            }
+            .featured-item:hover {
+                box-shadow: 0 8px 15px rgba(0,0,0,0.4), 0 0 10px rgba(198, 127, 61, 0.2);
+            }
+            .project-item {
+                background-color: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(198, 127, 61, 0.1);
+                box-shadow: none;
+            }
+            .project-item:hover {
+                box-shadow: 0 6px 12px rgba(0,0,0,0.25), 0 0 8px rgba(198, 127, 61, 0.15);
+            }
         }
+
         @media (max-width: 576px) {
              .header-container {
                  left: clamp(0.75rem, 3vw, 1rem);
@@ -667,7 +665,6 @@
                  margin-right: clamp(0.75rem, 3vw, 1rem);
                  width: calc(100% - clamp(0.75rem, 3vw, 1rem)*2);
                  padding: clamp(1rem, 2vw, 1.2rem);
-                 border-radius: 8px;
              }
              .featured-items-grid,
              .projects-grid {
@@ -691,12 +688,15 @@
                 max-width: 50vw;
             }
             main {
-                 display: grid;
-                 grid-template-columns: 1fr 1fr;
+                 max-width: 900px;
+                 margin-left: auto;
+                 margin-right: auto;
+                 display: flex;
+                 flex-direction: column;
                  gap: clamp(1.5rem, 3vw, 2rem);
-                 align-items: start;
-                 padding-left: clamp(1.5rem, 5vw, 2.5rem);
-                 padding-right: clamp(1.5rem, 5vw, 2.5rem);
+                 padding-left: 0;
+                 padding-right: 0;
+                 align-items: stretch;
             }
              .about-section,
              .what-i-do-section,
@@ -709,11 +709,9 @@
                  width: 100%;
                  align-self: stretch;
              }
-             .about-section { grid-column: 1 / 2; grid-row: 1 / 2; }
-             .what-i-do-section { grid-column: 2 / 3; grid-row: 1 / 2; }
-             .projects-section { grid-column: 1 / 2; grid-row: 2 / 3; }
-             .featured-content-section { grid-column: 2 / 3; grid-row: 2 / 3; }
-             .contact-section { grid-column: 1 / -1; grid-row: 3 / 4; margin-bottom: clamp(2rem, 5vw, 3rem); }
+             .contact-section {
+                 margin-bottom: clamp(2rem, 5vw, 3rem);
+             }
              .header-center-content {
                  flex-grow: 1;
                  justify-content: center;
@@ -723,6 +721,7 @@
         }
         @media (min-width: 1200px) {
             main {
+                max-width: 1000px;
                 gap: clamp(1.8rem, 2.5vw, 2.2rem);
             }
             .about-section,
@@ -851,7 +850,7 @@
         <section id="about" class="about-section" aria-labelledby="about-heading">
             <h2 id="about-heading">About me</h2>
             <p>I'm Kyale a software engineering undergrad.I live in Nairobi and dream of getting out. I enjoy coding. In my free time, I read physics books, especially topics like black holes and theoretical space-time. I'm also learning AI, started a while ago. I watch sci-fi movies,  on space and tech.I trade also, it's been humbling me alot but not for too long.My strategy is SMC i.e market structure, orderblocks, liquidity and MTF.I
-                left social media on january due to my mental health and focusing on my goals and used twitter instead but i decided to leave it today because its not what i excepcted it to do, I thought i would find self improvement groups but although there are, my feed is filled with a lot of unecessary stuff.Thanks foe being a follower. See you on the other side
+                left social media on january due to my mental health and focusing on my goals and used twitter instead but i decided I might  leave it today because its not what i excepcted it to do, I thought i would find self improvement groups but although there are, my feed is filled with a lot of unecessary stuff.
             </p>
         </section>
         <section id="what-i-do" class="what-i-do-section" aria-labelledby="what-i-do-heading">
@@ -891,7 +890,7 @@
                 <div class="featured-item">
                     <h3>Favourite series: The 100</h3>
                     <img src="images/100.jpg" alt="Promotional image for The 100 TV series" loading="lazy">
-                    <p>It has a lot of futuristic tech, which I love. A.L.I.E an AI, creates the City of Light to help people escape pain but at the cost of their free will. It’s a cool take on the more dystopian sides of AI. Even though many characters didn’t make it to the end, at least some found Sanctum.</p>
+                    <p>It has a lot of futuristic tech, which I love. A.L.I.E an AI, creates the City of Light to help people escape pain but at the cost of their free will. It’s a cool take on the more dystopian sides of AI. Even though many characters didn't make it to the end, at least some found Sanctum.</p>
                 </div>
                 <div class="featured-item">
                     <h3>Favourite artist</h3>
@@ -904,7 +903,7 @@
             <h2 id="contact-heading" class="contact-title">Get In Touch</h2>
             <div class="contact-icons">
                 <a href="https://www.instagram.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="images/ig.png" alt="Instagram" loading="lazy"></a>
-                <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)" loading="lazy"></a>
+                <a href="https://x.com/kyalemj/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="images/x.png" alt="X (Twitter)"></a>
                 <a href="https://github.com/fnj65767788" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="images/git.png" alt="GitHub" loading="lazy"></a>
                 <a href="mailto:kyalejapeth9@gmail.com" aria-label="Email"><img src="images/gmail.png" alt="Gmail" loading="lazy"></a>
             </div>
@@ -1215,7 +1214,7 @@
                        if (firstHighlightSpan) {
                           let parentTarget = firstHighlightSpan.parentElement;
                            while(parentTarget && parentTarget.parentElement && (window.getComputedStyle(parentTarget).display === 'inline' || parentTarget.offsetHeight < 10) && parentTarget.tagName !== 'BODY' && parentTarget.tagName !== 'MAIN' && !parentTarget.matches('section, div.project-item, div.featured-item, p, h1, h2, h3, li')) {
-                              parentTarget = parentTarget.parentElement;
+                              parentTarget = parentParent.parentElement;
                           }
                           finalScrollTarget = parentTarget || firstHighlightSpan;
                       }
